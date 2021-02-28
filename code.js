@@ -67,9 +67,7 @@ function resolveCollision(slot) {
         for (let index = 0; index < tempArray.length; index++) {
             h2 = getSlot(data[index].key, a[slot], b[slot], (M[slot] * M[slot]));//m` = m^2 
             if (dict[slot][h2]) {
-                //collision
                 collisions += 1;
-                //console.log(collisions);
                 break;
             } else {
                 dict[slot][h2] = tempArray[index];
@@ -82,7 +80,6 @@ function resolveCollision(slot) {
     }
 }
 
-//x = performance.now();
 for (let i = 0; i < CLOSED_ADDRESS_TABLE_M1; i++) {
     dict[i] = [];
     a[i] = 0;
@@ -103,7 +100,6 @@ for (let i = 0; i < sampEnglish.length; i++) {
     const slot = getSlot(key, A, B, CLOSED_ADDRESS_TABLE_M1);
     M[slot] += 1;
     dict[slot].push({ 'key': key, 'bn': sampBangla[i]});//initally add the key and data next to each other
-    //console.log(dict[slot]) ;
 }
 let total = 0; // no of secondary arrays
 for (let i = 0; i < M.length; i++) {
@@ -112,10 +108,6 @@ for (let i = 0; i < M.length; i++) {
         total += 1;
     }
 }
-//console.log("Slots left unused ", CLOSED_ADDRESS_TABLE_M1 - total);
-//y = performance.now();
-//console.log("Collisions occurred ", collisions);
-// console.log("Data processing took ", y - x, " ms");
 
 let input = document.querySelector('#input');
 let search_Button = document.querySelector('#search_button');
@@ -128,7 +120,6 @@ search_Button.addEventListener('click', function (e) {
         alert("Insert a word");
     }
 
-    //console.log(word);
     word = word.toLowerCase();
     let slot = hash_table.searchWord(word);
     if (slot === -1) {
@@ -147,5 +138,3 @@ search_Button.addEventListener('click', function (e) {
         }
     }
 })
-let liSelect = document.getElementById("word_list");
-console.log(liSelect) ;
